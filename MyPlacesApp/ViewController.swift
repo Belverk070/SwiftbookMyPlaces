@@ -18,7 +18,7 @@ class ViewController: UIViewController {
     }
 }
 
-// MARK: Extenstion to VC
+// MARK: DataSource to VC
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayOfCafe.count
@@ -28,7 +28,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell") else { return UITableViewCell() }
         cell.textLabel?.text = arrayOfCafe[indexPath.row]
         cell.imageView?.image = UIImage(named: arrayOfCafe[indexPath.row])
+        cell.imageView?.layer.cornerRadius = cell.frame.size.height / 2
+        cell.imageView?.clipsToBounds = true
         return cell
     }
+    
+    
+//    MARK: Delegate
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
 }
 
