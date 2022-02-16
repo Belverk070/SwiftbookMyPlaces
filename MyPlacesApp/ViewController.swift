@@ -25,11 +25,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell") else { return UITableViewCell() }
-        cell.textLabel?.text = arrayOfCafe[indexPath.row]
-        cell.imageView?.image = UIImage(named: arrayOfCafe[indexPath.row])
-        cell.imageView?.layer.cornerRadius = cell.frame.size.height / 2
-        cell.imageView?.clipsToBounds = true
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "reuseCell") as? CustomTableViewCell else { return UITableViewCell() }
+        cell.nameLabel?.text = arrayOfCafe[indexPath.row]
+        cell.imageOfPlace?.image = UIImage(named: arrayOfCafe[indexPath.row])
+        cell.imageOfPlace?.layer.cornerRadius = cell.imageOfPlace.frame.size.height / 2
+        cell.imageOfPlace?.clipsToBounds = true
         return cell
     }
     
@@ -37,7 +37,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 //    MARK: Delegate
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 85
     }
     
 }
