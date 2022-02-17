@@ -18,6 +18,7 @@
 		01DD9A9C27BE8F1100230C7E /* NewPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD9A9B27BE8F1100230C7E /* NewPlaceViewController.swift */; };
 		01DD9A9F27BEAF8700230C7E /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 01DD9A9E27BEAF8700230C7E /* Realm */; };
 		01DD9AA127BEAF8700230C7E /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 01DD9AA027BEAF8700230C7E /* RealmSwift */; };
+		01DD9AA327BEB23C00230C7E /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DD9AA227BEB23C00230C7E /* StorageManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		014CBF4327BD633100632315 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		014CBF4527BD69A800632315 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		01DD9A9B27BE8F1100230C7E /* NewPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPlaceViewController.swift; sourceTree = "<group>"; };
+		01DD9AA227BEB23C00230C7E /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				01DD9A9B27BE8F1100230C7E /* NewPlaceViewController.swift */,
 				014CBF4327BD633100632315 /* CustomTableViewCell.swift */,
 				014CBF4527BD69A800632315 /* PlaceModel.swift */,
+				01DD9AA227BEB23C00230C7E /* StorageManager.swift */,
 				0103001927BD43FD009D558D /* Main.storyboard */,
 				0103001C27BD43FE009D558D /* Assets.xcassets */,
 				0103001E27BD43FE009D558D /* LaunchScreen.storyboard */,
@@ -161,6 +164,7 @@
 				0103001827BD43FD009D558D /* ViewController.swift in Sources */,
 				01DD9A9C27BE8F1100230C7E /* NewPlaceViewController.swift in Sources */,
 				0103001427BD43FD009D558D /* AppDelegate.swift in Sources */,
+				01DD9AA327BEB23C00230C7E /* StorageManager.swift in Sources */,
 				014CBF4627BD69A800632315 /* PlaceModel.swift in Sources */,
 				014CBF4427BD633100632315 /* CustomTableViewCell.swift in Sources */,
 				0103001627BD43FD009D558D /* SceneDelegate.swift in Sources */,

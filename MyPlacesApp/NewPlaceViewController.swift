@@ -9,7 +9,7 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
     
-    var newPlace: Place?
+    var newPlace = Place()
     //    логика для установки заглушки для изображения
     var imageIsChanged = false
     
@@ -22,6 +22,9 @@ class NewPlaceViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        DispatchQueue.main.async {
+            self.newPlace.savePlaces()
+        }
         saveButton.isEnabled = false
         //        убрали разлиновку заменив его обычным view
         tableView.tableFooterView = UIView()
@@ -86,7 +89,7 @@ class NewPlaceViewController: UITableViewController {
         } else {
             image = UIImage(named: "imagePlaceholder")
         }
-        newPlace = Place(name: placeName.text!, locaction: placeLocation.text, type: placeType.text, image: image, restrauntImage: nil)
+//        newPlace = Place(name: placeName.text!, locaction: placeLocation.text, type: placeType.text, image: image, restrauntImage: nil)
     }
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {
         
