@@ -97,6 +97,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="myPlacesTableView" destination="PtF-rC-Wi1" id="MnP-yE-c4m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -250,13 +253,21 @@
                     <navigationItem key="navigationItem" title="Want add new place? " id="SKw-z8-UuI">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="d7P-ut-bxE">
                             <connections>
-                                <segue destination="cYG-JB-R7b" kind="unwind" unwindAction="backSegue:" id="nPf-0Z-pqj"/>
+                                <action selector="cancelAction:" destination="HPL-Ei-2dQ" id="qHu-8p-osJ"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="ozs-S1-YyJ"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="ozs-S1-YyJ">
+                            <connections>
+                                <segue destination="cYG-JB-R7b" kind="unwind" unwindAction="unwindSegue:" id="fRC-qB-grM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="imageOfPlaces" destination="VYv-gV-uC8" id="LT3-oF-kyc"/>
+                        <outlet property="placeImage" destination="VYv-gV-uC8" id="LT3-oF-kyc"/>
+                        <outlet property="placeLocation" destination="lZA-n5-Nxs" id="soq-VS-zf8"/>
+                        <outlet property="placeName" destination="LYF-lM-cfN" id="B00-ra-8FB"/>
+                        <outlet property="placeType" destination="Azm-gq-bQw" id="kFm-uH-Xiz"/>
+                        <outlet property="saveButton" destination="ozs-S1-YyJ" id="AoP-CG-dPa"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Br-y4-Cji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
