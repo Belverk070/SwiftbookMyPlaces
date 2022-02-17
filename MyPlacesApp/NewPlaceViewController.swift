@@ -9,6 +9,8 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
     
+    @IBOutlet weak var imageOfPlaces: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,7 +20,6 @@ class NewPlaceViewController: UITableViewController {
     }
     
     //    MARK: TableViewDelegate
-    
     //    настроили скрытие клавиатуры при нажатии на любую ячейку, кроме первой
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
@@ -26,12 +27,12 @@ class NewPlaceViewController: UITableViewController {
             let actionSheet = UIAlertController(title: nil,
                                                 message: nil,
                                                 preferredStyle: .actionSheet)
-            let camera = UIAlertAction(title: "Camera", style: .default) { _ in
-                self.chooseImagePicker(source: .camera)
+            let camera = UIAlertAction(title: "Camera", style: .default) { [weak self] _ in
+                self?.chooseImagePicker(source: .camera)
             }
             
-            let photo = UIAlertAction(title: "Photo", style: .default) { _ in
-                self.chooseImagePicker(source: .photoLibrary)            }
+            let photo = UIAlertAction(title: "Photo", style: .default) { [weak self] _ in
+                self?.chooseImagePicker(source: .photoLibrary)            }
             
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
             
@@ -59,17 +60,35 @@ extension NewPlaceViewController: UITextFieldDelegate {
 }
 
 //MARK: Work with image
-
-extension NewPlaceViewController {
+//UIImagePickerControllerDelegate используется для работы с ImagePickerController
+extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
         //        проверяем источник выбора на доступность
         if UIImagePickerController.isSourceTypeAvailable(source) {
             let imagePicker = UIImagePickerController()
+            //            определяем делегирование imagePicker, а делегатом будет сам класс, для этого нужно подписаться на UINavigationControllerDelegate
+            imagePicker.delegate = self
             imagePicker.allowsEditing = true
             imagePicker.sourceType = source
             present(imagePicker, animated: true, completion: nil)
         }
     }
+    //A set of methods that your delegate object must implement to interact with the image picker interface.
     
+    //   struct UIImagePickerController.InfoKey
+    // Keys you use to retrieve information from the editing dictionary about the media that the user selected.
+    //    набор ключей определяющих тип контента, который выбран пользователем. В нашем случае отредактированное изображение
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        //        берем значение по конкретному ключу структуры info. Свойство структуры определяет тип контента
+        
+        //        кастим до UIImage
+        imageOfPlaces.image = info[.editedImage] as? UIImage
+        //        настраиваем контент для отображения в UIImageVIew
+        imageOfPlaces.contentMode = .scaleAspectFill // масштабируем
+        imageOfPlaces.clipsToBounds = true // обрезаем по границам
+        dismiss(animated: true, completion: nil) // закрываем imagePickerController
+    }
 }
