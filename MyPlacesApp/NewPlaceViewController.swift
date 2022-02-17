@@ -23,7 +23,14 @@ class NewPlaceViewController: UITableViewController {
     //    настроили скрытие клавиатуры при нажатии на любую ячейку, кроме первой
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        
         if indexPath.row == 0 {
+            
+            //            Добавляем изображения для отображения в ImagePicker
+            let cameraIcon = UIImage(named: "camera")
+            let photoIcon = UIImage(named: "photo")
+            
+            
             let actionSheet = UIAlertController(title: nil,
                                                 message: nil,
                                                 preferredStyle: .actionSheet)
@@ -31,8 +38,19 @@ class NewPlaceViewController: UITableViewController {
                 self?.chooseImagePicker(source: .camera)
             }
             
+            //            Устанавливаем нужно изображение по ключу
+            camera.setValue(cameraIcon, forKey: "image")
+            //            Устаналиваем расположение текста в пикере
+            camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+            
+            
             let photo = UIAlertAction(title: "Photo", style: .default) { [weak self] _ in
                 self?.chooseImagePicker(source: .photoLibrary)            }
+            
+            //            Устанавливаем нужно изображение по ключу
+            photo.setValue(photoIcon, forKey: "image")
+            //            Устаналиваем расположение текста в пикере
+            photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
             
             let cancel = UIAlertAction(title: "Cancel", style: .cancel)
             
