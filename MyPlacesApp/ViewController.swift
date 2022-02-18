@@ -23,17 +23,11 @@ class ViewController: UIViewController {
         
     }
     
-    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
-        //        кастим на анвинд NewPlaceVC и добавляем в массив новый объект, обновляем таблицу
-        guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
-        newPlaceVC.saveNewPlace()
-        myPlacesTableView.reloadData()
-    }
-    
 }
 
-// MARK: DataSource and Delegate to VC
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    // MARK: DataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return places.isEmpty ? 0 : places.count
     }
@@ -52,6 +46,11 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showDetail", sender: Any?.self)
+    }
+    
+//    MARK: Delegate
 //    настройка удаления объекта 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
@@ -72,6 +71,25 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
 //
 //        return UISwipeActionsConfiguration(actions: [deleteAction])
 //    }
+    
+    // MARK: - Navigation
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showDetail" {
+            guard let indexPath = myPlacesTableView.indexPathForSelectedRow else { return }
+            let place = places[indexPath.row]
+            let newPlaceVC = segue.destination as! NewPlaceViewController
+            newPlaceVC.currentPlace = place
+        }
+    }
+    
+    @IBAction func unwindSegue(_ segue: UIStoryboardSegue) {
+        
+        guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
+        
+        newPlaceVC.savePlace()
+        myPlacesTableView.reloadData()
+    }
     
 }
 

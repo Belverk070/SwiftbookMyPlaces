@@ -9,6 +9,7 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
     
+    var currentPlace: Place?
     //    для установки заглушки для изображения
     var imageIsChanged = false
     
@@ -26,6 +27,7 @@ class NewPlaceViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         //        добавляем action  на placeName, чтобы делать кнопку Save активной/неактивной. За состоянием кнопки следит textFieldChanged
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
+        setupEditScreen()
     }
     
     //    MARK: TableViewDelegate
@@ -68,13 +70,13 @@ class NewPlaceViewController: UITableViewController {
             actionSheet.addAction(cancel)
             
             present(actionSheet, animated: true)
-    
+            
         } else {
             view.endEditing(true)
         }
     }
     
-    func saveNewPlace() {
+    func savePlace() {
         
         //       заглушка изображения
         var image: UIImage?
@@ -83,13 +85,46 @@ class NewPlaceViewController: UITableViewController {
         } else {
             image = UIImage(named: "imagePlaceholder")
         }
-//        приводим image к типу Data
+        //        приводим image к типу Data
         let imageData = image?.pngData()
-//        вызываем инициализатор для нового объекта
+        //        вызываем инициализатор для нового объекта
         let newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, imageData: imageData)
         
-        StorageManager.saveObject(newPlace)
+        if currentPlace != nil {
+            try! realm.write {
+                currentPlace?.name = newPlace.name
+                currentPlace?.locaction = newPlace.locaction
+                currentPlace?.type = newPlace.type
+                currentPlace?.imageData = newPlace.imageData
+            }
+        } else {
+            StorageManager.saveObject(newPlace)
+        }
         
+    }
+    
+    private func setupEditScreen() {
+        if currentPlace != nil {
+            
+            setupNavigationBar()
+            imageIsChanged = true
+            
+            guard let data = currentPlace?.imageData, let image = UIImage(data: data) else { return }
+            placeImage.image = image
+            placeImage.contentMode = .scaleAspectFill
+            placeName.text = currentPlace?.name
+            placeLocation.text = currentPlace?.locaction
+            placeType.text = currentPlace?.type
+        }
+    }
+    
+    private func setupNavigationBar() {
+        if let topItem = navigationController?.navigationBar.topItem {
+            topItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        }
+        navigationItem.leftBarButtonItem = nil
+        title = currentPlace?.name
+        saveButton.isEnabled = true
     }
     
     @IBAction func cancelAction(_ sender: UIBarButtonItem) {

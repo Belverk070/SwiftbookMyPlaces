@@ -72,6 +72,7 @@
                                             <outlet property="locationLabel" destination="dS3-h9-cvz" id="V1b-TL-pm6"/>
                                             <outlet property="nameLabel" destination="I6Y-6c-VxP" id="mab-YS-fP6"/>
                                             <outlet property="typeLabel" destination="LN1-Zo-0Dr" id="Uch-Aj-shv"/>
+                                            <segue destination="HPL-Ei-2dQ" kind="show" identifier="showDetail" trigger="accessoryAction" id="MGN-YC-gyp"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -90,7 +91,7 @@
                             <constraint firstItem="PtF-rC-Wi1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vUa-Ib-Pus"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="My Places" id="weV-s8-Hue">
+                    <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="weV-s8-Hue">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Rob-la-7yX">
                             <connections>
                                 <segue destination="Moa-NZ-6eG" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="v0e-QP-IC4"/>
@@ -250,7 +251,7 @@
                             <outlet property="delegate" destination="HPL-Ei-2dQ" id="M75-vN-Zq8"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Want add new place? " id="SKw-z8-UuI">
+                    <navigationItem key="navigationItem" title="Want add new place? " largeTitleDisplayMode="always" id="SKw-z8-UuI">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="d7P-ut-bxE">
                             <connections>
                                 <action selector="cancelAction:" destination="HPL-Ei-2dQ" id="qHu-8p-osJ"/>
@@ -273,15 +274,15 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Br-y4-Cji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cYG-JB-R7b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2781.1594202898555" y="49.553571428571423"/>
+            <point key="canvasLocation" x="1793" y="50"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="P0M-Ap-RaG">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KpZ-SX-AIN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="x3s-FD-WA7">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="x3s-FD-WA7">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Zapfino" family="Zapfino" pointSize="14"/>
@@ -318,9 +319,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iuy-We-uxw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1873.913043478261" y="49.553571428571423"/>
+            <point key="canvasLocation" x="1794" y="-672"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="J6J-Ba-7dc"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Photo" width="195" height="196"/>
         <systemColor name="systemBackgroundColor">
