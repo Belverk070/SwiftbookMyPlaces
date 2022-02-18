@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PtF-rC-Wi1">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="119" width="414" height="743"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseCell" id="Bps-Uf-8dI" customClass="CustomTableViewCell" customModule="MyPlacesApp" customModuleProvider="target">
@@ -81,17 +81,35 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="MRA-Ux-De1"/>
                                 </connections>
                             </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="QPf-FC-NjZ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Date"/>
+                                    <segment title="Name"/>
+                                </segments>
+                                <connections>
+                                    <action selector="sortSelection:" destination="BYZ-38-t0r" eventType="valueChanged" id="SCj-tX-0BN"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="PtF-rC-Wi1" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="4I2-74-THF"/>
+                            <constraint firstItem="PtF-rC-Wi1" firstAttribute="top" secondItem="QPf-FC-NjZ" secondAttribute="bottom" id="Gvc-Lp-h4e"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PtF-rC-Wi1" secondAttribute="trailing" id="bFB-Ip-SXI"/>
+                            <constraint firstItem="QPf-FC-NjZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fXo-AG-hSW"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PtF-rC-Wi1" secondAttribute="bottom" id="gD8-by-SVl"/>
+                            <constraint firstItem="QPf-FC-NjZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gYT-Yi-ORY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QPf-FC-NjZ" secondAttribute="trailing" id="p7U-LK-2SC"/>
                             <constraint firstItem="PtF-rC-Wi1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vUa-Ib-Pus"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="My Places" largeTitleDisplayMode="never" id="weV-s8-Hue">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="AZ" id="CeG-zz-xO0">
+                            <connections>
+                                <action selector="reversedSorting:" destination="BYZ-38-t0r" id="Sui-a0-oEC"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Rob-la-7yX">
                             <connections>
                                 <segue destination="Moa-NZ-6eG" kind="presentation" modalPresentationStyle="fullScreen" modalTransitionStyle="crossDissolve" id="v0e-QP-IC4"/>
@@ -100,6 +118,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="myPlacesTableView" destination="PtF-rC-Wi1" id="MnP-yE-c4m"/>
+                        <outlet property="reversedSortedButoon" destination="CeG-zz-xO0" id="Tan-qE-YIl"/>
+                        <outlet property="segmentedControl" destination="QPf-FC-NjZ" id="gqt-T2-UMi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -323,9 +343,10 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="J6J-Ba-7dc"/>
+        <segue reference="MGN-YC-gyp"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="195" height="196"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

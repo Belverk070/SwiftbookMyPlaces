@@ -10,19 +10,45 @@ import RealmSwift
 
 class ViewController: UIViewController {
     
-//    Results - массив из Realm с данными
+    //    Results - массив из Realm с данными
     var places: Results<Place>!
- 
+    var ascendingSorting = true
+    
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var reversedSortedButoon: UIBarButtonItem!
     @IBOutlet weak var myPlacesTableView: UITableView!
-
+    
     //    MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-//        добавляем данные из реалма в массив places
+        //        добавляем данные из реалма в массив places
         places = realm.objects(Place.self)
         
     }
+    @IBAction func sortSelection(_ sender: UISegmentedControl) {
+        sorting()
+    }
+    @IBAction func reversedSorting(_ sender: UIBarButtonItem) {
+        ascendingSorting.toggle()
+        
+        if ascendingSorting {
+            reversedSortedButoon.image = UIImage(named: "AZ")
+        } else {
+            reversedSortedButoon.image = UIImage(named: "ZA")
+        }
+        sorting()
+    }
     
+    private func sorting() {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            places = places.sorted(byKeyPath: "date", ascending: ascendingSorting)
+            
+        } else {
+            places = places.sorted(byKeyPath: "name", ascending: ascendingSorting)
+            
+        }
+        myPlacesTableView.reloadData()
+    }
 }
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
@@ -50,8 +76,8 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         self.performSegue(withIdentifier: "showDetail", sender: Any?.self)
     }
     
-//    MARK: Delegate
-//    настройка удаления объекта 
+    //    MARK: Delegate
+    //    настройка удаления объекта
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let place = places[indexPath.row]
@@ -60,20 +86,20 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
-//    можно использовать для настройки массива действий по свайпу справа налево
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//
-//        let place = places[indexPath.row]
-//        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
-//            StorageManager.deleteObject(place)
-//            tableView.deleteRows(at: [indexPath], with: .automatic)
-//        }
-//
-//        return UISwipeActionsConfiguration(actions: [deleteAction])
-//    }
+    //    можно использовать для настройки массива действий по свайпу справа налево
+    //    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    //
+    //        let place = places[indexPath.row]
+    //        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+    //            StorageManager.deleteObject(place)
+    //            tableView.deleteRows(at: [indexPath], with: .automatic)
+    //        }
+    //
+    //        return UISwipeActionsConfiguration(actions: [deleteAction])
+    //    }
     
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
             guard let indexPath = myPlacesTableView.indexPathForSelectedRow else { return }

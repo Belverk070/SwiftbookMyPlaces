@@ -14,6 +14,7 @@ class Place: Object {
     @objc dynamic var locaction: String?
     @objc dynamic var type: String?
     @objc dynamic var imageData: Data?
+    @objc dynamic var date = Date()
     
 //    назначенный инициализатор, обозначается ключевым словом convenience
     convenience init(name: String, location: String?, type: String?, imageData: Data?) {
