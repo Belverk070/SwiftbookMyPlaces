@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     //    MARK: ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 //        добавляем данные из реалма в массив places
         places = realm.objects(Place.self)
         
@@ -33,7 +32,7 @@ class ViewController: UIViewController {
     
 }
 
-// MARK: DataSource to VC
+// MARK: DataSource and Delegate to VC
 extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return places.isEmpty ? 0 : places.count
@@ -52,5 +51,27 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         cell.imageOfPlace?.clipsToBounds = true
         return cell
     }
+    
+//    настройка удаления объекта 
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let place = places[indexPath.row]
+            StorageManager.deleteObject(place)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+//    можно использовать для настройки массива действий по свайпу справа налево
+//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+//
+//        let place = places[indexPath.row]
+//        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, _ in
+//            StorageManager.deleteObject(place)
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
+//        }
+//
+//        return UISwipeActionsConfiguration(actions: [deleteAction])
+//    }
+    
 }
 

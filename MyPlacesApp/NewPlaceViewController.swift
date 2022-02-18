@@ -68,8 +68,7 @@ class NewPlaceViewController: UITableViewController {
             actionSheet.addAction(cancel)
             
             present(actionSheet, animated: true)
-            
-            
+    
         } else {
             view.endEditing(true)
         }
