@@ -9,8 +9,7 @@ import UIKit
 
 class NewPlaceViewController: UITableViewController {
     
-    var newPlace = Place()
-    //    логика для установки заглушки для изображения
+    //    для установки заглушки для изображения
     var imageIsChanged = false
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -22,15 +21,11 @@ class NewPlaceViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        DispatchQueue.main.async {
-            self.newPlace.savePlaces()
-        }
         saveButton.isEnabled = false
         //        убрали разлиновку заменив его обычным view
         tableView.tableFooterView = UIView()
         //        добавляем action  на placeName, чтобы делать кнопку Save активной/неактивной. За состоянием кнопки следит textFieldChanged
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
-        
     }
     
     //    MARK: TableViewDelegate
@@ -82,20 +77,25 @@ class NewPlaceViewController: UITableViewController {
     
     func saveNewPlace() {
         
-        //        реализовываем заглушку если изображение не было выбрано
+        //       заглушка изображения
         var image: UIImage?
         if imageIsChanged {
             image = placeImage.image
         } else {
             image = UIImage(named: "imagePlaceholder")
         }
-//        newPlace = Place(name: placeName.text!, locaction: placeLocation.text, type: placeType.text, image: image, restrauntImage: nil)
-    }
-    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+//        приводим image к типу Data
+        let imageData = image?.pngData()
+//        вызываем инициализатор для нового объекта
+        let newPlace = Place(name: placeName.text!, location: placeLocation.text, type: placeType.text, imageData: imageData)
         
-        dismiss(animated: true, completion: nil)
+        StorageManager.saveObject(newPlace)
+        
     }
     
+    @IBAction func cancelAction(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
 }
 
 // MARK: TextFieldDelegate
@@ -133,7 +133,6 @@ extension NewPlaceViewController: UIImagePickerControllerDelegate, UINavigationC
         }
     }
     //A set of methods that your delegate object must implement to interact with the image picker interface.
-    
     //   struct UIImagePickerController.InfoKey
     // Keys you use to retrieve information from the editing dictionary about the media that the user selected.
     //    набор ключей определяющих тип контента, который выбран пользователем. В нашем случае отредактированное изображение
