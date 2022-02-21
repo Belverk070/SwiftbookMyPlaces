@@ -22,9 +22,10 @@ class NewPlaceViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        saveButton.isEnabled = false
         //        убрали разлиновку заменив его обычным view
-        tableView.tableFooterView = UIView()
+        tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 1))
+        saveButton.isEnabled = false
+        
         //        добавляем action  на placeName, чтобы делать кнопку Save активной/неактивной. За состоянием кнопки следит textFieldChanged
         placeName.addTarget(self, action: #selector(textFieldChanged), for: .editingChanged)
         setupEditScreen()

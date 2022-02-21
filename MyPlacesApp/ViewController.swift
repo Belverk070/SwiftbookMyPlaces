@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var reversedSortedButoon: UIBarButtonItem!
-    @IBOutlet weak var myPlacesTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     
     //    MARK: ViewDidLoad
     override func viewDidLoad() {
@@ -62,7 +62,7 @@ class ViewController: UIViewController {
         } else {
             places = places.sorted(byKeyPath: "name", ascending: ascendingSorting)
         }
-        myPlacesTableView.reloadData()
+        tableView.reloadData()
     }
 }
 
@@ -110,6 +110,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     //    можно использовать для настройки массива действий по свайпу справа налево
     //    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
     //
@@ -126,7 +130,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showDetail" {
-            guard let indexPath = myPlacesTableView.indexPathForSelectedRow else { return }
+            guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let place: Place
             if isFiltering {
                 place = filteredPlaces[indexPath.row]
@@ -143,7 +147,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         guard let newPlaceVC = segue.source as? NewPlaceViewController else { return }
         
         newPlaceVC.savePlace()
-        myPlacesTableView.reloadData()
+        tableView.reloadData()
     }
     
 }
@@ -156,6 +160,6 @@ extension ViewController: UISearchResultsUpdating {
     
     private func filterContentForSearchText(_ searchText: String) {
         filteredPlaces = places.filter("name CONTAINS[c] %@ OR locaction CONTAINS[c] %@", searchText, searchText)
-        myPlacesTableView.reloadData()
+        tableView.reloadData()
 }
 }

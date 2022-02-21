@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="PtF-rC-Wi1">
-                                <rect key="frame" x="0.0" y="119" width="414" height="743"/>
+                                <rect key="frame" x="0.0" y="119" width="414" height="777"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="reuseCell" id="Bps-Uf-8dI" customClass="CustomTableViewCell" customModule="MyPlacesApp" customModuleProvider="target">
@@ -98,7 +98,7 @@
                             <constraint firstItem="PtF-rC-Wi1" firstAttribute="top" secondItem="QPf-FC-NjZ" secondAttribute="bottom" id="Gvc-Lp-h4e"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PtF-rC-Wi1" secondAttribute="trailing" id="bFB-Ip-SXI"/>
                             <constraint firstItem="QPf-FC-NjZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="fXo-AG-hSW"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="PtF-rC-Wi1" secondAttribute="bottom" id="gD8-by-SVl"/>
+                            <constraint firstAttribute="bottom" secondItem="PtF-rC-Wi1" secondAttribute="bottom" id="gD8-by-SVl"/>
                             <constraint firstItem="QPf-FC-NjZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="gYT-Yi-ORY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="QPf-FC-NjZ" secondAttribute="trailing" id="p7U-LK-2SC"/>
                             <constraint firstItem="PtF-rC-Wi1" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vUa-Ib-Pus"/>
@@ -117,9 +117,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="myPlacesTableView" destination="PtF-rC-Wi1" id="MnP-yE-c4m"/>
                         <outlet property="reversedSortedButoon" destination="CeG-zz-xO0" id="Tan-qE-YIl"/>
                         <outlet property="segmentedControl" destination="QPf-FC-NjZ" id="gqt-T2-UMi"/>
+                        <outlet property="tableView" destination="PtF-rC-Wi1" id="MnP-yE-c4m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -263,6 +263,28 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="140" id="MAr-4y-jEz">
+                                        <rect key="frame" x="0.0" y="519.5" width="414" height="140"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="MAr-4y-jEz" id="50U-ER-518">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="252" placeholderIntrinsicHeight="44" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="vgG-yq-eW2" customClass="RatingControl" customModule="MyPlacesApp" customModuleProvider="target">
+                                                    <rect key="frame" x="81" y="48" width="252" height="44"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="starCount">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="vgG-yq-eW2" firstAttribute="centerX" secondItem="50U-ER-518" secondAttribute="centerX" id="VYj-t6-RdW"/>
+                                                <constraint firstItem="vgG-yq-eW2" firstAttribute="centerY" secondItem="50U-ER-518" secondAttribute="centerY" id="zr6-bG-bj3"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -294,7 +316,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Br-y4-Cji" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="cYG-JB-R7b" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1793" y="50"/>
+            <point key="canvasLocation" x="1792.753623188406" y="49.553571428571423"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="P0M-Ap-RaG">
@@ -342,6 +364,11 @@
             <point key="canvasLocation" x="1794" y="-672"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="vgG-yq-eW2">
+            <size key="intrinsicContentSize" width="252" height="44"/>
+        </designable>
+    </designables>
     <inferredMetricsTieBreakers>
         <segue reference="MGN-YC-gyp"/>
     </inferredMetricsTieBreakers>
