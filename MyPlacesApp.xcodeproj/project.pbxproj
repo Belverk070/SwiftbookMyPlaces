@@ -13,6 +13,7 @@
 		0103001B27BD43FD009D558D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0103001927BD43FD009D558D /* Main.storyboard */; };
 		0103001D27BD43FE009D558D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0103001C27BD43FE009D558D /* Assets.xcassets */; };
 		0103002027BD43FE009D558D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0103001E27BD43FE009D558D /* LaunchScreen.storyboard */; };
+		01042F8327C93F8400B5F01F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01042F8227C93F8400B5F01F /* MapViewController.swift */; };
 		014CBF4427BD633100632315 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014CBF4327BD633100632315 /* CustomTableViewCell.swift */; };
 		014CBF4627BD69A800632315 /* PlaceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014CBF4527BD69A800632315 /* PlaceModel.swift */; };
 		018A123827C3F6B00012C39B /* RatingControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018A123727C3F6B00012C39B /* RatingControl.swift */; };
@@ -31,6 +32,7 @@
 		0103001C27BD43FE009D558D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0103001F27BD43FE009D558D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0103002127BD43FE009D558D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01042F8227C93F8400B5F01F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		014CBF4327BD633100632315 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		014CBF4527BD69A800632315 /* PlaceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceModel.swift; sourceTree = "<group>"; };
 		018A123727C3F6B00012C39B /* RatingControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingControl.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 				01DD9AA227BEB23C00230C7E /* StorageManager.swift */,
 				0103001727BD43FD009D558D /* ViewController.swift */,
 				01DD9A9B27BE8F1100230C7E /* NewPlaceViewController.swift */,
+				01042F8227C93F8400B5F01F /* MapViewController.swift */,
 				014CBF4327BD633100632315 /* CustomTableViewCell.swift */,
 				018A123727C3F6B00012C39B /* RatingControl.swift */,
 				014CBF4527BD69A800632315 /* PlaceModel.swift */,
@@ -168,6 +171,7 @@
 				018A123827C3F6B00012C39B /* RatingControl.swift in Sources */,
 				01DD9A9C27BE8F1100230C7E /* NewPlaceViewController.swift in Sources */,
 				0103001427BD43FD009D558D /* AppDelegate.swift in Sources */,
+				01042F8327C93F8400B5F01F /* MapViewController.swift in Sources */,
 				01DD9AA327BEB23C00230C7E /* StorageManager.swift in Sources */,
 				014CBF4627BD69A800632315 /* PlaceModel.swift in Sources */,
 				014CBF4427BD633100632315 /* CustomTableViewCell.swift in Sources */,
