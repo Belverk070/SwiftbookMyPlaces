@@ -81,24 +81,21 @@ class NewPlaceViewController: UITableViewController {
 //    MARK: Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier != "showMap" {
-            return
-        }
+        if segue.identifier != "showMap" { return }
         
         let mapVC = segue.destination as! MapViewController
-        mapVC.place = currentPlace
+        mapVC.place.name = placeName.text!
+        mapVC.place.locaction = placeLocation.text
+        mapVC.place.type = placeType.text
+        mapVC.place.imageData = placeImage.image?.pngData()
         
     }
     
     func savePlace() {
         
         //       заглушка изображения
-        var image: UIImage?
-        if imageIsChanged {
-            image = placeImage.image
-        } else {
-            image = UIImage(named: "imagePlaceholder")
-        }
+        let image = imageIsChanged ? placeImage.image :   UIImage(named: "imagePlaceholder")
+  
         //        приводим image к типу Data
         let imageData = image?.pngData()
         //        вызываем инициализатор для нового объекта
