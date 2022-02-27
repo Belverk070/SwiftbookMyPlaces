@@ -392,6 +392,7 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="doneButton" destination="nzy-ZQ-RkH" eventType="touchUpInside" id="Pmz-kA-6EG"/>
+                                    <action selector="doneButtonAction" destination="nzy-ZQ-RkH" eventType="touchUpInside" id="CuS-bb-b7g"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IwM-Cw-WlD">
@@ -406,6 +407,18 @@
                                     <action selector="closeVC" destination="nzy-ZQ-RkH" eventType="touchUpInside" id="crP-pp-F1B"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beP-2D-jpC">
+                                <rect key="frame" x="177" y="762" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="FYX-fp-9yz"/>
+                                    <constraint firstAttribute="height" constant="60" id="Thm-jw-G2X"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="car" catalog="system"/>
+                                <connections>
+                                    <action selector="goButtonPressed" destination="nzy-ZQ-RkH" eventType="touchUpInside" id="PMc-do-5mB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Pc-kC-zeX"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -416,6 +429,7 @@
                             <constraint firstItem="6CQ-Is-H1Q" firstAttribute="top" secondItem="P3L-46-SOx" secondAttribute="top" id="Mod-xu-Kd7"/>
                             <constraint firstItem="j9i-sW-pHk" firstAttribute="centerX" secondItem="P3L-46-SOx" secondAttribute="centerX" id="Ody-uU-faE"/>
                             <constraint firstAttribute="bottom" secondItem="6CQ-Is-H1Q" secondAttribute="bottom" id="b3s-jn-TZS"/>
+                            <constraint firstItem="6Pc-kC-zeX" firstAttribute="bottom" secondItem="beP-2D-jpC" secondAttribute="bottom" constant="40" id="dno-A9-Chj"/>
                             <constraint firstItem="6Pc-kC-zeX" firstAttribute="bottom" secondItem="8Oc-s8-LRB" secondAttribute="bottom" constant="20" id="fOv-oJ-lls"/>
                             <constraint firstItem="6Pc-kC-zeX" firstAttribute="trailing" secondItem="76V-xq-Pvi" secondAttribute="trailing" constant="106" id="hAY-xx-gqR"/>
                             <constraint firstItem="6CQ-Is-H1Q" firstAttribute="trailing" secondItem="6Pc-kC-zeX" secondAttribute="trailing" id="hp5-Bi-kXD"/>
@@ -423,6 +437,7 @@
                             <constraint firstItem="76V-xq-Pvi" firstAttribute="leading" secondItem="6Pc-kC-zeX" secondAttribute="leading" constant="107" id="nPg-I3-MAT"/>
                             <constraint firstItem="6Pc-kC-zeX" firstAttribute="trailing" secondItem="ltP-gH-WRZ" secondAttribute="trailing" constant="20" id="nnJ-gU-VZe"/>
                             <constraint firstItem="6Pc-kC-zeX" firstAttribute="trailing" secondItem="IwM-Cw-WlD" secondAttribute="trailing" constant="20" id="qjm-3j-g4T"/>
+                            <constraint firstItem="beP-2D-jpC" firstAttribute="centerX" secondItem="P3L-46-SOx" secondAttribute="centerX" id="tdf-ky-BBv"/>
                             <constraint firstItem="j9i-sW-pHk" firstAttribute="centerY" secondItem="P3L-46-SOx" secondAttribute="centerY" constant="-20" id="ufs-Hz-dul"/>
                             <constraint firstItem="IwM-Cw-WlD" firstAttribute="top" secondItem="6Pc-kC-zeX" secondAttribute="top" constant="20" id="xAA-ff-xJY"/>
                         </constraints>
@@ -430,6 +445,7 @@
                     <connections>
                         <outlet property="addressLabel" destination="76V-xq-Pvi" id="y03-Mv-y8d"/>
                         <outlet property="doneButton" destination="8Oc-s8-LRB" id="UVD-gi-e5e"/>
+                        <outlet property="goButton" destination="beP-2D-jpC" id="h6o-Jb-XV5"/>
                         <outlet property="mapPinImage" destination="j9i-sW-pHk" id="svr-wB-4DO"/>
                         <outlet property="mapView" destination="6CQ-Is-H1Q" id="0UA-dM-68N"/>
                     </connections>
@@ -497,6 +513,7 @@
         <image name="AZ" width="25" height="24"/>
         <image name="Photo" width="195" height="196"/>
         <image name="arrowshape.turn.up.backward.fill" catalog="system" width="128" height="106"/>
+        <image name="car" catalog="system" width="128" height="93"/>
         <image name="map" width="50" height="50"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="mappin" catalog="system" width="105" height="128"/>
