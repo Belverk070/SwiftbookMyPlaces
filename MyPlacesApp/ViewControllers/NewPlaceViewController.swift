@@ -89,7 +89,7 @@ class NewPlaceViewController: UITableViewController {
         
         if identifier == "showPlace" {
             mapVC.place.name = placeName.text!
-            mapVC.place.locaction = placeLocation.text
+            mapVC.place.location = placeLocation.text
             mapVC.place.type = placeType.text
             mapVC.place.imageData = placeImage.image?.pngData()
         }
@@ -108,7 +108,7 @@ class NewPlaceViewController: UITableViewController {
         if currentPlace != nil {
             try! realm.write {
                 currentPlace?.name = newPlace.name
-                currentPlace?.locaction = newPlace.locaction
+                currentPlace?.location = newPlace.location
                 currentPlace?.type = newPlace.type
                 currentPlace?.imageData = newPlace.imageData
                 currentPlace?.rating = newPlace.rating
@@ -129,7 +129,7 @@ class NewPlaceViewController: UITableViewController {
             placeImage.image = image
             placeImage.contentMode = .scaleAspectFill
             placeName.text = currentPlace?.name
-            placeLocation.text = currentPlace?.locaction
+            placeLocation.text = currentPlace?.location
             placeType.text = currentPlace?.type
             ratingControl.rating = Int(currentPlace.rating)
         }

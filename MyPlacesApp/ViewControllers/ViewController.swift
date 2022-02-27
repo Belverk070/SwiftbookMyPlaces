@@ -83,7 +83,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         
         
         cell.nameLabel?.text = place.name
-        cell.locationLabel.text = place.locaction
+        cell.locationLabel.text = place.location
         cell.typeLabel.text = place.type
         //        добавляем логику по изображению заведения
         cell.imageOfPlace.image = UIImage(data: place.imageData!)
